@@ -4,6 +4,7 @@ import Image from "next/image";
 import { NextPage } from "next";
 import { getImage } from "./api/image";
 import { Card, Shapes, Stats, Symbols } from "./api/types";
+import Head from "next/head";
 
 const Draw: NextPage = () => {
   const [initialCards] = useState(Cards.cards as Card[]);
@@ -135,48 +136,58 @@ const Draw: NextPage = () => {
 
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
-            <td>&nbsp;</td>
-            <td>{getImage("damage1")}</td>
-            <td>Avg</td>
-            <td>Range</td>
-            <td>{getImage("route1")}</td>
-            <td>Avg</td>
-            <td>Range</td>
-            <td>{getImage("special")}</td>
-            <td>BLANK</td>
-          </tr>
-        </thead>
-        <tbody>
-          {shapeStatRow("triangle", triangleStat)}
-          {shapeStatRow("circle", circleStat)}
-          {shapeStatRow("rectangle", rectangleStat)}
-          {shapeStatRow("hexagon", hexagonStat)}
-          {renderDestiny(destinyStats)}
-          <tr>
-            <td colSpan={3}>
-              <button type="button" onClick={drawCard}>
-                Draw card ({deck.length} left)
-              </button>
-            </td>
-            <td colSpan={2}>
-              <button type="button" onClick={resetDeck}>
-                Reshuffle deck
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      {currentCard && (
-        <Image
-          src={`/fate/${currentCard.id}.png`}
-          alt={currentCard.id.toString()}
-          width={359}
-          height={585}
+      <Head>
+        <title>RuneWars Fate Deck</title>
+        <meta
+          name="description"
+          content="Simulate drawing cards from TuneWars"
         />
-      )}
+        <link rel="icon" href="/favicon.png" />
+      </Head>
+      <main>
+        <table>
+          <thead>
+            <tr>
+              <td>&nbsp;</td>
+              <td>{getImage("damage1")}</td>
+              <td>Avg</td>
+              <td>Range</td>
+              <td>{getImage("route1")}</td>
+              <td>Avg</td>
+              <td>Range</td>
+              <td>{getImage("special")}</td>
+              <td>BLANK</td>
+            </tr>
+          </thead>
+          <tbody>
+            {shapeStatRow("triangle", triangleStat)}
+            {shapeStatRow("circle", circleStat)}
+            {shapeStatRow("rectangle", rectangleStat)}
+            {shapeStatRow("hexagon", hexagonStat)}
+            {renderDestiny(destinyStats)}
+            <tr>
+              <td colSpan={3}>
+                <button type="button" onClick={drawCard}>
+                  Draw card ({deck.length} left)
+                </button>
+              </td>
+              <td colSpan={2}>
+                <button type="button" onClick={resetDeck}>
+                  Reshuffle deck
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {currentCard && (
+          <Image
+            src={`/fate/${currentCard.id}.png`}
+            alt={currentCard.id.toString()}
+            width={359}
+            height={585}
+          />
+        )}
+      </main>
     </div>
   );
 };
