@@ -1,0 +1,245 @@
+{
+  "version": 1.0,
+  "cards": [
+    {
+      "id": 1,
+      "triangle": null,
+      "rectangle": "route2",
+      "hexagon": "damage2",
+      "circle": "special",
+      "destiny": "red"
+    },
+    {
+      "id": 2,
+      "triangle": null,
+      "rectangle": "route2",
+      "hexagon": "damage1",
+      "circle": "special",
+      "destiny": "red"
+    },
+    {
+      "id": 3,
+      "triangle": null,
+      "rectangle": "special",
+      "hexagon": "damage1",
+      "circle": "special",
+      "destiny": null
+    },
+    {
+      "id": 4,
+      "triangle": null,
+      "rectangle": "special",
+      "hexagon": null,
+      "circle": "special",
+      "destiny": null
+    },
+    {
+      "id": 5,
+      "triangle": "route1",
+      "rectangle": null,
+      "hexagon": null,
+      "circle": "damage1",
+      "destiny": "gold"
+    },
+    {
+      "id": 6,
+      "triangle": "route1",
+      "rectangle": null,
+      "hexagon": "special",
+      "circle": "damage1",
+      "destiny": "red"
+    },
+    {
+      "id": 7,
+      "triangle": "route1",
+      "rectangle": null,
+      "hexagon": "special",
+      "circle": null,
+      "destiny": "gold"
+    },
+    {
+      "id": 8,
+      "triangle": "route1",
+      "rectangle": "route1",
+      "hexagon": "damage3",
+      "circle": null,
+      "destiny": "red"
+    },
+    {
+      "id": 9,
+      "triangle": "special",
+      "rectangle": "route1",
+      "hexagon": "damage3",
+      "circle": null,
+      "destiny": "red"
+    },
+    {
+      "id": 10,
+      "triangle": "special",
+      "rectangle": "route1",
+      "hexagon": "damage2",
+      "circle": null,
+      "destiny": "red"
+    },
+    {
+      "id": 11,
+      "triangle": null,
+      "rectangle": "damage2",
+      "hexagon": "damage2",
+      "circle": "special",
+      "destiny": "red"
+    },
+    {
+      "id": 12,
+      "triangle": null,
+      "rectangle": "damage2",
+      "hexagon": "damage1",
+      "circle": "special",
+      "destiny": "red"
+    },
+    {
+      "id": 13,
+      "triangle": null,
+      "rectangle": "special",
+      "hexagon": "damage1",
+      "circle": "special",
+      "destiny": null
+    },
+    {
+      "id": 14,
+      "triangle": null,
+      "rectangle": "special",
+      "hexagon": "damage1",
+      "circle": "special",
+      "destiny": null
+    },
+    {
+      "id": 15,
+      "triangle": "damage1",
+      "rectangle": null,
+      "hexagon": null,
+      "circle": "route1",
+      "destiny": null
+    },
+    {
+      "id": 16,
+      "triangle": "damage1",
+      "rectangle": null,
+      "hexagon": "special",
+      "circle": "route1",
+      "destiny": "red"
+    },
+    {
+      "id": 17,
+      "triangle": "damage1",
+      "rectangle": null,
+      "hexagon": "special",
+      "circle": null,
+      "destiny": "gold"
+    },
+    {
+      "id": 18,
+      "triangle": "damage1",
+      "rectangle": "damage1",
+      "hexagon": "damage3",
+      "circle": null,
+      "destiny": "red"
+    },
+    {
+      "id": 19,
+      "triangle": "special",
+      "rectangle": "damage1",
+      "hexagon": null,
+      "circle": null,
+      "destiny": "red"
+    },
+    {
+      "id": 20,
+      "triangle": "special",
+      "rectangle": "damage1",
+      "hexagon": "damage2",
+      "circle": null,
+      "destiny": "red"
+    },
+    {
+      "id": 21,
+      "triangle": null,
+      "rectangle": "damage2",
+      "hexagon": "route2",
+      "circle": "special",
+      "destiny": "red"
+    },
+    {
+      "id": 22,
+      "triangle": null,
+      "rectangle": "damage2",
+      "hexagon": "route2",
+      "circle": "special",
+      "destiny": "red"
+    },
+    {
+      "id": 23,
+      "triangle": null,
+      "rectangle": "special",
+      "hexagon": "route1",
+      "circle": "special",
+      "destiny": null
+    },
+    {
+      "id": 24,
+      "triangle": null,
+      "rectangle": "special",
+      "hexagon": null,
+      "circle": "special",
+      "destiny": null
+    },
+    {
+      "id": 25,
+      "triangle": "damage1",
+      "rectangle": null,
+      "hexagon": null,
+      "circle": "damage1",
+      "destiny": null
+    },
+    {
+      "id": 26,
+      "triangle": "damage1",
+      "rectangle": null,
+      "hexagon": "special",
+      "circle": "damage1",
+      "destiny": "red"
+    },
+    {
+      "id": 27,
+      "triangle": "damage1",
+      "rectangle": null,
+      "hexagon": "special",
+      "circle": null,
+      "destiny": "gold"
+    },
+    {
+      "id": 28,
+      "triangle": "damage1",
+      "rectangle": "damage1",
+      "hexagon": "route2",
+      "circle": null,
+      "destiny": "red"
+    },
+    {
+      "id": 29,
+      "triangle": "special",
+      "rectangle": "damage1",
+      "hexagon": "route2",
+      "circle": null,
+      "destiny": "red"
+    },
+    {
+      "id": 30,
+      "triangle": "special",
+      "rectangle": "damage1",
+      "hexagon": "route2",
+      "circle": null,
+      "destiny": "red"
+    }
+  ]
+}
