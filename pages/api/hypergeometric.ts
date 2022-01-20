@@ -24,9 +24,11 @@ const cumulativeHypergeometric = (
   sampleSuccess: number
 ) => {
   let sum = 0;
+
   for (let i = 0; i < sampleSuccess; i++) {
     sum += hypergeometric(populationSize, successesInPopulation, sampleSize, i);
   }
+  if (populationSize === successesInPopulation) return 100;
   return Math.floor((1 - sum) * 100).toFixed(0);
 };
 

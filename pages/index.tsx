@@ -262,8 +262,6 @@ const Draw: NextPage = () => {
   const hexagonStat = getShapeStats("hexagon");
   const destinyStats = getShapeStats("destiny");
 
-  console.log(destinyStats);
-
   return (
     <div>
       <Head>
