@@ -188,19 +188,27 @@ const Draw: NextPage = () => {
             cardsToDraw,
             1
           )}
-          {
-            //Math.round((stats.gold / stats.cardsLeft) * 100)
-          }
           %
         </td>
         <td>
           <Icon symbol="blank" />
         </td>
-        <td>{Math.round((stats.blank / stats.cardsLeft) * 100)}%</td>
+        <td>
+          {cumulativeHypergeometric(
+            stats.cardsLeft,
+            stats.blank,
+            cardsToDraw,
+            1
+          )}
+          %
+        </td>
         <td>
           <Icon symbol="red" />
         </td>
-        <td>{Math.round((stats.red / stats.cardsLeft) * 100)}%</td>
+        <td>
+          {cumulativeHypergeometric(stats.cardsLeft, stats.red, cardsToDraw, 1)}
+          %
+        </td>
       </tr>
     );
   };
@@ -226,8 +234,24 @@ const Draw: NextPage = () => {
         <td>{chance(stats.route)}%</td>
         <td>{avg(stats.route)}</td>
         <td>{range(stats.route)}</td>
-        <td>{((stats.special / stats.cardsLeft) * 100).toFixed()}%</td>
-        <td>{((stats.blank / stats.cardsLeft) * 100).toFixed()}%</td>
+        <td>
+          {cumulativeHypergeometric(
+            stats.cardsLeft,
+            stats.special,
+            cardsToDraw,
+            1
+          )}
+          %
+        </td>
+        <td>
+          {cumulativeHypergeometric(
+            stats.cardsLeft,
+            stats.blank,
+            cardsToDraw,
+            1
+          )}
+          %
+        </td>
       </tr>
     );
   };
