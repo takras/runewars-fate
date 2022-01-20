@@ -12,12 +12,8 @@ const Draw: NextPage = () => {
   const [initialCards] = useState(Cards.cards as Card[]);
   const [deck, setDeck] = useState([...initialCards]);
   const [drawnCards, setDrawnCards] = useState<Card[]>([]);
-  const [currentCard, setCurrentCard] = useState<Card>();
+  const [, setCurrentCard] = useState<Card>();
   const [cardsToDraw, setCardsToDraw] = useState(1);
-
-  useEffect(() => {
-    console.log(drawnCards);
-  }, [drawnCards]);
 
   const drawCard = () => {
     setDrawnCards([]);
@@ -57,14 +53,15 @@ const Draw: NextPage = () => {
         }
         return 1;
       })
-      .map((result) =>
-        result[shape] ? (
+      .map((result, idx) => {
+        return result[shape] ? (
           <Icon
+            key={idx}
             className={styles.resultIcon}
             symbol={result[shape] as Symbols}
           />
-        ) : null
-      );
+        ) : null;
+      });
   };
 
   const Results = () => {
@@ -268,7 +265,6 @@ const Draw: NextPage = () => {
                   onChange={(e) => {
                     const value = parseInt(e.currentTarget.value);
                     if (!isNaN(value)) {
-                      console.log(value);
                       setCardsToDraw(parseInt(e.currentTarget.value));
                     }
                   }}

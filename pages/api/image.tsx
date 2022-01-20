@@ -8,6 +8,7 @@ interface Props {
 }
 
 export const Icon = ({ symbol, className }: Props) => {
+  let times = 1;
   let width = 0;
   let height = 0;
   let folder = "";
@@ -70,14 +71,30 @@ export const Icon = ({ symbol, className }: Props) => {
       height = 50;
       break;
   }
-  return (
-    <div className={`${styles[folder]} ${className}`}>
-      <Image
-        alt={fileName}
-        width={width}
-        height={height}
-        src={`/${folder}/${fileName}.png`}
-      />
-    </div>
-  );
+  switch (symbol) {
+    case "route2":
+    case "damage2":
+      times = 2;
+      break;
+    case "damage3":
+      times = 3;
+      break;
+  }
+
+  const images: JSX.Element[] = [];
+
+  for (let i = 0; i < times; i++) {
+    images.push(
+      <div className={`${styles[folder]} ${className}`} key={i}>
+        <Image
+          alt={fileName}
+          width={width}
+          height={height}
+          src={`/${folder}/${fileName}.png`}
+        />
+      </div>
+    );
+  }
+
+  return <>{images}</>;
 };
