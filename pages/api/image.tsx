@@ -2,7 +2,12 @@ import styles from "./image.module.css";
 import { Symbols } from "./types";
 import Image from "next/image";
 
-export const getImage = (symbol: Symbols) => {
+interface Props {
+  symbol: Symbols;
+  className?: string;
+}
+
+export const Icon = ({ symbol, className }: Props) => {
   let width = 0;
   let height = 0;
   let folder = "";
@@ -59,9 +64,14 @@ export const getImage = (symbol: Symbols) => {
       width = 95;
       height = 118;
       break;
+    case "damage":
+      folder = "icons";
+      width = 50;
+      height = 50;
+      break;
   }
   return (
-    <div className={styles[folder]}>
+    <div className={`${styles[folder]} ${className}`}>
       <Image
         alt={fileName}
         width={width}

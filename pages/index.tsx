@@ -1,35 +1,112 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Cards from "./api/cards.json";
 import Image from "next/image";
 import { NextPage } from "next";
-import { getImage } from "./api/image";
+import { Icon } from "./api/image";
 import { Card, Shapes, Stats, Symbols } from "./api/types";
 import Head from "next/head";
 
+import styles from "./index.module.css";
+
 const Draw: NextPage = () => {
   const [initialCards] = useState(Cards.cards as Card[]);
-  const [deck, setDeck] = useState(initialCards);
-  const [drawnCards, setDrawnCards] = useState([{}]);
+  const [deck, setDeck] = useState([...initialCards]);
+  const [drawnCards, setDrawnCards] = useState<Card[]>([]);
   const [currentCard, setCurrentCard] = useState<Card>();
+  const [cardsToDraw, setCardsToDraw] = useState(1);
+
+  useEffect(() => {
+    console.log(drawnCards);
+  }, [drawnCards]);
 
   const drawCard = () => {
-    const random = Math.floor(Math.random() * deck.length);
-    const deckClone = [...deck];
-    const drawnCard = deckClone[random];
-    setDrawnCards([...drawnCards, drawnCard]);
-    setCurrentCard(drawnCard);
-    console.log(drawnCard, typeof Cards.cards);
-    deckClone.splice(random, 1);
-    if (deckClone.length === 0) {
-      setDeck(initialCards);
-    } else {
-      setDeck(deckClone);
+    setDrawnCards([]);
+    const cardList = [];
+    let deckClone = [...deck];
+    for (let i = 0; i < cardsToDraw; i++) {
+      const random = Math.floor(Math.random() * deckClone.length);
+      const drawnCard = deckClone[random];
+      deckClone.splice(random, 1);
+      if (deckClone.length === 0) {
+        deckClone = [...initialCards];
+      }
+      cardList.push(drawnCard);
     }
+    setDeck(deckClone);
+    setDrawnCards(cardList);
+    setCurrentCard(cardList[cardList.length - 1]);
   };
 
   const resetDeck = () => {
+    setDrawnCards([]);
     setDeck(initialCards);
     setCurrentCard(undefined);
+  };
+
+  const getResult = (shape: Shapes) => {
+    return drawnCards
+      .filter((card) => card[shape])
+      .sort((card1, card2) => {
+        const a = card1[shape] || "";
+        const b = card2[shape] || "";
+        if (a < b) {
+          return -1;
+        }
+        if (a > b) {
+          return 1;
+        }
+        return 1;
+      })
+      .map((result) =>
+        result[shape] ? (
+          <Icon
+            className={styles.resultIcon}
+            symbol={result[shape] as Symbols}
+          />
+        ) : null
+      );
+  };
+
+  const Results = () => {
+    return (
+      <table className={styles.resultTable}>
+        <thead>
+          <tr>
+            <th colSpan={10}>Results:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <Icon symbol="triangle" />
+            </td>
+            <td>{getResult("triangle")}</td>
+          </tr>
+          <tr>
+            <td>
+              <Icon symbol="circle" />
+            </td>
+            <td>{getResult("circle")}</td>
+          </tr>
+          <tr>
+            <td>
+              <Icon symbol="rectangle" />
+            </td>
+            <td>{getResult("rectangle")}</td>
+          </tr>
+          <tr>
+            <td>
+              <Icon symbol="hexagon" />
+            </td>
+            <td>{getResult("hexagon")}</td>
+          </tr>
+          <tr>
+            <td>Destiny:</td>
+            <td>{getResult("destiny")}</td>
+          </tr>
+        </tbody>
+      </table>
+    );
   };
 
   const getShapeStats = (shape: Shapes) => {
@@ -90,7 +167,7 @@ const Draw: NextPage = () => {
     return `${min}-${max}`;
   };
 
-  const renderDestiny = (stats: {
+  const Destiny = (stats: {
     red: number;
     gold: number;
     blank: number;
@@ -100,11 +177,17 @@ const Draw: NextPage = () => {
       <tr>
         <td>&nbsp;</td>
         <td colSpan={2}>Destiny</td>
-        <td>{getImage("gold")}</td>
+        <td>
+          <Icon symbol="gold" />
+        </td>
         <td>{Math.round((stats.gold / stats.cardsLeft) * 100)}%</td>
-        <td>{getImage("blank")}</td>
+        <td>
+          <Icon symbol="blank" />
+        </td>
         <td>{Math.round((stats.blank / stats.cardsLeft) * 100)}%</td>
-        <td>{getImage("red")}</td>
+        <td>
+          <Icon symbol="red" />
+        </td>
         <td>{Math.round((stats.red / stats.cardsLeft) * 100)}%</td>
       </tr>
     );
@@ -115,7 +198,9 @@ const Draw: NextPage = () => {
       Math.round((list.length / stats.cardsLeft) * 100);
     return (
       <tr>
-        <td>{getImage(shape)}</td>
+        <td>
+          <Icon symbol={shape} />
+        </td>
         <td>{chance(stats.damage)}%</td>
         <td>{avg(stats.damage)}</td>
         <td>{range(stats.damage)}</td>
@@ -149,13 +234,19 @@ const Draw: NextPage = () => {
           <thead>
             <tr>
               <td>&nbsp;</td>
-              <td>{getImage("damage1")}</td>
+              <td>
+                <Icon symbol="damage1" />
+              </td>
               <td>Avg</td>
               <td>Range</td>
-              <td>{getImage("route1")}</td>
+              <td>
+                <Icon symbol="route1" />
+              </td>
               <td>Avg</td>
               <td>Range</td>
-              <td>{getImage("special")}</td>
+              <td>
+                <Icon symbol="special" />
+              </td>
               <td>BLANK</td>
             </tr>
           </thead>
@@ -164,29 +255,40 @@ const Draw: NextPage = () => {
             {shapeStatRow("circle", circleStat)}
             {shapeStatRow("rectangle", rectangleStat)}
             {shapeStatRow("hexagon", hexagonStat)}
-            {renderDestiny(destinyStats)}
+            {Destiny(destinyStats)}
             <tr>
               <td colSpan={3}>
+                <label htmlFor="numberCards">Cards to draw:</label>
+                <input
+                  className={styles.numberInput}
+                  type="number"
+                  min={1}
+                  max={30}
+                  id="numberCards"
+                  onChange={(e) => {
+                    const value = parseInt(e.currentTarget.value);
+                    if (!isNaN(value)) {
+                      console.log(value);
+                      setCardsToDraw(parseInt(e.currentTarget.value));
+                    }
+                  }}
+                  value={cardsToDraw}
+                />
+              </td>
+              <td colSpan={3}>
                 <button type="button" onClick={drawCard}>
-                  Draw card ({deck.length} left)
+                  Draw {cardsToDraw} card{cardsToDraw !== 1 ? "s" : ""}
                 </button>
               </td>
-              <td colSpan={2}>
+              <td colSpan={5}>
                 <button type="button" onClick={resetDeck}>
-                  Reshuffle deck
+                  Reshuffle deck ({deck.length} in deck)
                 </button>
               </td>
             </tr>
           </tbody>
         </table>
-        {currentCard && (
-          <Image
-            src={`/fate/${currentCard.id}.png`}
-            alt={currentCard.id.toString()}
-            width={359}
-            height={585}
-          />
-        )}
+        <Results />
       </main>
     </div>
   );

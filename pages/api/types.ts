@@ -5,9 +5,11 @@ export type Shapes =
   | "hexagon"
   | "destiny";
 export type Symbols =
+  | "damage"
   | "damage1"
   | "damage2"
   | "damage3"
+  | "route"
   | "route1"
   | "route2"
   | "special"
