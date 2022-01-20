@@ -31,6 +31,7 @@ const Draw: NextPage = () => {
     setDeck(deckClone);
     setDrawnCards(cardList);
     setCurrentCard(cardList[cardList.length - 1]);
+    setCardsToDraw(1);
   };
 
   const resetDeck = () => {
@@ -69,7 +70,10 @@ const Draw: NextPage = () => {
       <table className={styles.resultTable}>
         <thead>
           <tr>
-            <th colSpan={10}>Results:</th>
+            <th colSpan={1}>Results:</th>
+            <th>
+              {drawnCards.length > 0 && `Drew ${drawnCards.length} cards`}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -222,7 +226,7 @@ const Draw: NextPage = () => {
         <title>RuneWars Fate Deck</title>
         <meta
           name="description"
-          content="Simulate drawing cards from TuneWars"
+          content="Simulate drawing cards from RuneWars"
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
