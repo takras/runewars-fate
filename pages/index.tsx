@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Cards from "./api/cards.json";
-import Image from "next/image";
 import { NextPage } from "next";
 import { Icon } from "./api/image";
 import { Card, Shapes, Stats, Symbols } from "./api/types";
 import Head from "next/head";
+import { cumulativeHypergeometric } from "./api/hypergeometric";
 
 import styles from "./index.module.css";
 
@@ -181,7 +181,18 @@ const Draw: NextPage = () => {
         <td>
           <Icon symbol="gold" />
         </td>
-        <td>{Math.round((stats.gold / stats.cardsLeft) * 100)}%</td>
+        <td>
+          {cumulativeHypergeometric(
+            stats.cardsLeft,
+            stats.gold,
+            cardsToDraw,
+            1
+          )}
+          {
+            //Math.round((stats.gold / stats.cardsLeft) * 100)
+          }
+          %
+        </td>
         <td>
           <Icon symbol="blank" />
         </td>
@@ -195,8 +206,15 @@ const Draw: NextPage = () => {
   };
 
   const shapeStatRow = (shape: Shapes, stats: Stats) => {
-    const chance = (list: number[]) =>
-      Math.round((list.length / stats.cardsLeft) * 100);
+    const chance = (list: number[]) => {
+      return cumulativeHypergeometric(
+        stats.cardsLeft,
+        list.length,
+        cardsToDraw,
+        1
+      );
+    };
+
     return (
       <tr>
         <td>
@@ -219,6 +237,8 @@ const Draw: NextPage = () => {
   const rectangleStat = getShapeStats("rectangle");
   const hexagonStat = getShapeStats("hexagon");
   const destinyStats = getShapeStats("destiny");
+
+  console.log(destinyStats);
 
   return (
     <div>
