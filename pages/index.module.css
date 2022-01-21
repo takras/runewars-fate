@@ -4,6 +4,11 @@
   display: block;
 }
 
+.numberIndicator {
+  font-size: 8rem;
+
+}
+
 .resultIcon {
   display: inline-block;
 }
@@ -15,4 +20,8 @@
 .resultTable td {
   padding: 5px;
   border-top: 1px solid grey;
+}
+
+.stepButton {
+  font-size: 3rem;
 }

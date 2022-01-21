@@ -40,6 +40,14 @@ const Draw: NextPage = () => {
     setCurrentCard(undefined);
   };
 
+  const decreaseDraw = () => {
+    setCardsToDraw(cardsToDraw <= 1 ? 1 : cardsToDraw - 1);
+  };
+
+  const increaseDraw = () => {
+    setCardsToDraw(cardsToDraw >= initialCards.length ? 30 : cardsToDraw + 1);
+  };
+
   const getResult = (shape: Shapes) => {
     return drawnCards
       .filter((card) => card[shape])
@@ -302,20 +310,14 @@ const Draw: NextPage = () => {
             <tr>
               <td colSpan={3}>
                 <label htmlFor="numberCards">Cards to draw:</label>
-                <input
-                  className={styles.numberInput}
-                  type="number"
-                  min={1}
-                  max={30}
-                  id="numberCards"
-                  onChange={(e) => {
-                    const value = parseInt(e.currentTarget.value);
-                    if (!isNaN(value)) {
-                      setCardsToDraw(parseInt(e.currentTarget.value));
-                    }
-                  }}
-                  value={cardsToDraw}
-                />
+
+                <div className={styles.numberIndicator}>{cardsToDraw}</div>
+                <button className={styles.stepButton} onClick={decreaseDraw}>
+                  -
+                </button>
+                <button className={styles.stepButton} onClick={increaseDraw}>
+                  +
+                </button>
               </td>
               <td colSpan={3}>
                 <button type="button" onClick={drawCard}>
@@ -330,7 +332,7 @@ const Draw: NextPage = () => {
             </tr>
           </tbody>
         </table>
-        <Results />
+        {drawnCards.length > 0 && <Results />}
       </main>
     </div>
   );
