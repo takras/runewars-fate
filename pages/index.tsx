@@ -80,7 +80,10 @@ const Draw: NextPage = () => {
           <tr>
             <th colSpan={1}>Results:</th>
             <th>
-              {drawnCards.length > 0 && `Drew ${drawnCards.length} cards`}
+              {drawnCards.length > 0 &&
+                `Drew ${drawnCards.length} card${
+                  drawnCards.length !== 1 ? "s" : ""
+                }`}
             </th>
           </tr>
         </thead>

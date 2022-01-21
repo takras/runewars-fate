@@ -29,7 +29,7 @@ const cumulativeHypergeometric = (
     sum += hypergeometric(populationSize, successesInPopulation, sampleSize, i);
   }
   if (populationSize === successesInPopulation) return 100;
-  return Math.floor((1 - sum) * 100).toFixed(0);
+  return ((1 - sum) * 100).toFixed(0);
 };
 
 export { cumulativeHypergeometric };
