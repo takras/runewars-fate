@@ -85,7 +85,14 @@ export const Icon = ({ symbol, className }: Props) => {
 
   for (let i = 0; i < times; i++) {
     images.push(
-      <div className={`${styles[folder]} ${className}`} key={i}>
+      <div
+        className={`
+          ${styles.icons}
+          ${folder === "destiny" ? styles.destiny : ""}
+          ${className || ""}
+        `}
+        key={i}
+      >
         <Image
           alt={fileName}
           width={width}
