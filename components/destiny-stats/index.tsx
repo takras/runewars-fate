@@ -1,6 +1,6 @@
 import { cumulativeHypergeometric } from "../../pages/api/hypergeometric";
 import { Icon } from "../../pages/api/image";
-import { getShapeStats } from "../../pages/api/stats";
+import { getDestinyStats } from "../../pages/api/stats";
 import { Card } from "../../pages/api/types";
 import styles from "./index.module.css";
 
@@ -11,7 +11,7 @@ const DestinyStats = ({
   cardsToDraw: number;
   deck: Card[];
 }) => {
-  const stats = getShapeStats("destiny", deck);
+  const stats = getDestinyStats(deck);
 
   return (
     <section className={styles.destinyStats}>
@@ -26,8 +26,7 @@ const DestinyStats = ({
         <Icon symbol="blank" />
       </div>
       <div>
-        {cumulativeHypergeometric(stats.cardsLeft, stats.blank, cardsToDraw, 1)}
-        %
+        {cumulativeHypergeometric(stats.cardsLeft, stats.grey, cardsToDraw, 1)}%
       </div>
       <div>
         <Icon symbol="red" />

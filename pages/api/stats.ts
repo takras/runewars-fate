@@ -1,4 +1,4 @@
-import { Shapes, Card, Stats, Symbols } from "./types";
+import { Shapes, Card, Stats, Symbols, DestinyStats } from "./types";
 
 export const getShapeStats = (shape: Shapes, deck: Card[]) => {
   const stats: Stats = {
@@ -6,10 +6,8 @@ export const getShapeStats = (shape: Shapes, deck: Card[]) => {
     damage: [],
     route: [],
     special: 0,
-    blank: 0,
-    red: 0,
-    gold: 0,
   };
+
   deck.forEach((card) => {
     const cardShape = card[shape];
     if (cardShape) {
@@ -23,15 +21,33 @@ export const getShapeStats = (shape: Shapes, deck: Card[]) => {
         case "special":
           stats.special++;
           break;
-        case "red":
-          stats.red++;
-          break;
-        case "gold":
-          stats.gold++;
-          break;
-        default:
-          stats.blank++;
       }
+    }
+  });
+
+  return stats;
+};
+
+export const getDestinyStats = (deck: Card[]) => {
+  const stats: DestinyStats = {
+    cardsLeft: deck.length,
+    gold: 0,
+    red: 0,
+    grey: 0,
+  };
+
+  deck.forEach((card) => {
+    const cardDestiny = card.destiny;
+    switch (cardDestiny) {
+      case "gold":
+        stats.gold++;
+        break;
+      case "red":
+        stats.red++;
+        break;
+      case "grey":
+        stats.grey++;
+        break;
     }
   });
   return stats;

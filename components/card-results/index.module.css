@@ -20,6 +20,30 @@
   transform: rotateX(3deg) rotateY(-1deg) rotateZ(2deg);
 }
 
+.destiny {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  left: 50%;
+  top: 0.3em;
+  height: clamp(0rem, 4rem, 6vh);
+  position: absolute;
+  transform: translateX(-48%);
+  width: clamp(0rem, 4rem, 6vh);
+}
+
+.destiny--gold {
+  background-image: url(/destiny/gold.png);
+}
+
+.destiny--red {
+  background-image: url(/destiny/red.png);
+}
+
+.destiny--grey {
+  background-image: url(/destiny/blank.png);
+}
+
 .summary {
   left: 50%;
   bottom: 1.2em;

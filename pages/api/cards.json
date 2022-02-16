@@ -7,7 +7,7 @@
       "rectangle": { "type": "route", "count": 2 },
       "hexagon": { "type": "damage", "count": 2 },
       "circle": { "type": "special", "count": 1 },
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 2,
@@ -15,7 +15,7 @@
       "rectangle": { "type": "route", "count": 2 },
       "hexagon": { "type": "damage", "count": 1 },
       "circle": { "type": "special", "count": 1 },
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 3,
@@ -23,7 +23,7 @@
       "rectangle": { "type": "special", "count": 1 },
       "hexagon": { "type": "damage", "count": 1 },
       "circle": { "type": "special", "count": 1 },
-      "destiny": null
+      "destiny": "grey"
     },
     {
       "id": 4,
@@ -31,7 +31,7 @@
       "rectangle": { "type": "special", "count": 1 },
       "hexagon": null,
       "circle": { "type": "special", "count": 1 },
-      "destiny": null
+      "destiny": "grey"
     },
     {
       "id": 5,
@@ -39,7 +39,7 @@
       "rectangle": null,
       "hexagon": null,
       "circle": { "type": "damage", "count": 1 },
-      "destiny": { "type": "gold", "count": 1 }
+      "destiny": "gold"
     },
     {
       "id": 6,
@@ -47,7 +47,7 @@
       "rectangle": null,
       "hexagon": { "type": "special", "count": 1 },
       "circle": { "type": "damage", "count": 1 },
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 7,
@@ -55,7 +55,7 @@
       "rectangle": null,
       "hexagon": { "type": "special", "count": 1 },
       "circle": null,
-      "destiny": { "type": "gold", "count": 1 }
+      "destiny": "gold"
     },
     {
       "id": 8,
@@ -63,7 +63,7 @@
       "rectangle": { "type": "route", "count": 1 },
       "hexagon": { "type": "damage", "count": 3 },
       "circle": null,
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 9,
@@ -71,7 +71,7 @@
       "rectangle": { "type": "route", "count": 1 },
       "hexagon": { "type": "damage", "count": 3 },
       "circle": null,
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 10,
@@ -79,7 +79,7 @@
       "rectangle": { "type": "route", "count": 1 },
       "hexagon": { "type": "damage", "count": 2 },
       "circle": null,
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 11,
@@ -87,7 +87,7 @@
       "rectangle": { "type": "damage", "count": 2 },
       "hexagon": { "type": "damage", "count": 2 },
       "circle": { "type": "special", "count": 1 },
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 12,
@@ -95,7 +95,7 @@
       "rectangle": { "type": "damage", "count": 2 },
       "hexagon": { "type": "damage", "count": 1 },
       "circle": { "type": "special", "count": 1 },
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 13,
@@ -103,7 +103,7 @@
       "rectangle": { "type": "special", "count": 1 },
       "hexagon": { "type": "damage", "count": 1 },
       "circle": { "type": "special", "count": 1 },
-      "destiny": null
+      "destiny": "grey"
     },
     {
       "id": 14,
@@ -111,7 +111,7 @@
       "rectangle": { "type": "special", "count": 1 },
       "hexagon": { "type": "damage", "count": 1 },
       "circle": { "type": "special", "count": 1 },
-      "destiny": null
+      "destiny": "grey"
     },
     {
       "id": 15,
@@ -119,7 +119,7 @@
       "rectangle": null,
       "hexagon": null,
       "circle": { "type": "route", "count": 1 },
-      "destiny": null
+      "destiny": "grey"
     },
     {
       "id": 16,
@@ -127,7 +127,7 @@
       "rectangle": null,
       "hexagon": { "type": "special", "count": 1 },
       "circle": { "type": "route", "count": 1 },
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 17,
@@ -135,7 +135,7 @@
       "rectangle": null,
       "hexagon": { "type": "special", "count": 1 },
       "circle": null,
-      "destiny": { "type": "gold", "count": 1 }
+      "destiny": "gold"
     },
     {
       "id": 18,
@@ -143,7 +143,7 @@
       "rectangle": { "type": "damage", "count": 1 },
       "hexagon": { "type": "damage", "count": 3 },
       "circle": null,
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 19,
@@ -151,7 +151,7 @@
       "rectangle": { "type": "damage", "count": 1 },
       "hexagon": null,
       "circle": null,
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 20,
@@ -159,7 +159,7 @@
       "rectangle": { "type": "damage", "count": 1 },
       "hexagon": { "type": "damage", "count": 2 },
       "circle": null,
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 21,
@@ -167,7 +167,7 @@
       "rectangle": { "type": "damage", "count": 2 },
       "hexagon": { "type": "route", "count": 2 },
       "circle": { "type": "special", "count": 1 },
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 22,
@@ -175,7 +175,7 @@
       "rectangle": { "type": "damage", "count": 2 },
       "hexagon": { "type": "route", "count": 2 },
       "circle": { "type": "special", "count": 1 },
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 23,
@@ -183,7 +183,7 @@
       "rectangle": { "type": "special", "count": 1 },
       "hexagon": { "type": "route", "count": 1 },
       "circle": { "type": "special", "count": 1 },
-      "destiny": null
+      "destiny": "grey"
     },
     {
       "id": 24,
@@ -191,7 +191,7 @@
       "rectangle": { "type": "special", "count": 1 },
       "hexagon": null,
       "circle": { "type": "special", "count": 1 },
-      "destiny": null
+      "destiny": "grey"
     },
     {
       "id": 25,
@@ -199,7 +199,7 @@
       "rectangle": null,
       "hexagon": null,
       "circle": { "type": "damage", "count": 1 },
-      "destiny": null
+      "destiny": "grey"
     },
     {
       "id": 26,
@@ -207,7 +207,7 @@
       "rectangle": null,
       "hexagon": { "type": "special", "count": 1 },
       "circle": { "type": "damage", "count": 1 },
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 27,
@@ -215,7 +215,7 @@
       "rectangle": null,
       "hexagon": { "type": "special", "count": 1 },
       "circle": null,
-      "destiny": { "type": "gold", "count": 1 }
+      "destiny": "gold"
     },
     {
       "id": 28,
@@ -223,7 +223,7 @@
       "rectangle": { "type": "damage", "count": 1 },
       "hexagon": { "type": "route", "count": 2 },
       "circle": null,
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 29,
@@ -231,7 +231,7 @@
       "rectangle": { "type": "damage", "count": 1 },
       "hexagon": { "type": "route", "count": 2 },
       "circle": null,
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     },
     {
       "id": 30,
@@ -239,7 +239,7 @@
       "rectangle": { "type": "damage", "count": 1 },
       "hexagon": { "type": "route", "count": 2 },
       "circle": null,
-      "destiny": { "type": "red", "count": 1 }
+      "destiny": "red"
     }
   ]
 }
