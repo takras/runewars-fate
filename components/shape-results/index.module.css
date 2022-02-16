@@ -64,7 +64,7 @@
 
 .shapeResult dd {
   font-family: var(--font-family-headers);
-  font-size: 2rem;
+  font-size: 3em;
   margin: 0;
   text-shadow: 2px 2px 2px hsl(0, 0%, 100%), 2px 2px 2px hsl(0, 0%, 100%),
     2px 2px 2px hsl(0, 0%, 100%), -2px 2px 2px hsl(0, 0%, 100%),

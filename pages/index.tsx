@@ -86,24 +86,6 @@ const Draw: NextPage = () => {
     return counts;
   };
 
-  const getShapeResults = (shape: Shapes) => {
-    const shapeCards = drawnCards.filter((card) => card[shape]);
-    const counts: Record<CardType, number> = {
-      route: 0,
-      damage: 0,
-      special: 0,
-    };
-
-    shapeCards.forEach((card) => {
-      // guaranteed not undefined by filter above
-      const cardType = card[shape]!.type;
-      const shapeCount = card[shape]!.count;
-      counts[cardType] += shapeCount;
-    });
-
-    return counts;
-  };
-
   return (
     <>
       <Head>
@@ -141,12 +123,7 @@ const Draw: NextPage = () => {
 
         {drawnCards.length > 0 && (
           <div className={styles.results}>
-            <CardResults
-              triangle={getShapeResults("triangle")}
-              rectangle={getShapeResults("rectangle")}
-              hexagon={getShapeResults("hexagon")}
-              circle={getShapeResults("circle")}
-            />
+            <CardResults cardsDrawn={drawnCards} />
             <table className={styles.resultTable}>
               <thead>
                 <tr>
