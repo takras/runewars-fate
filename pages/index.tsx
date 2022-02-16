@@ -104,62 +104,6 @@ const Draw: NextPage = () => {
     return counts;
   };
 
-  const Results = () => {
-    return (
-      <>
-        <CardResults
-          triangle={getShapeResults("triangle")}
-          rectangle={getShapeResults("rectangle")}
-          hexagon={getShapeResults("hexagon")}
-          circle={getShapeResults("circle")}
-        />
-        <table className={styles.resultTable}>
-          <thead>
-            <tr>
-              <th colSpan={1}>Results:</th>
-              <th>
-                {drawnCards.length > 0 &&
-                  `Drew ${drawnCards.length} card${
-                    drawnCards.length !== 1 ? "s" : ""
-                  }`}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <Icon symbol="triangle" />
-              </td>
-              <td>{getResult("triangle")}</td>
-            </tr>
-            <tr>
-              <td>
-                <Icon symbol="circle" />
-              </td>
-              <td>{getResult("circle")}</td>
-            </tr>
-            <tr>
-              <td>
-                <Icon symbol="rectangle" />
-              </td>
-              <td>{getResult("rectangle")}</td>
-            </tr>
-            <tr>
-              <td>
-                <Icon symbol="hexagon" />
-              </td>
-              <td>{getResult("hexagon")}</td>
-            </tr>
-            <tr>
-              <td>Destiny:</td>
-              <td>{getResult("destiny")}</td>
-            </tr>
-          </tbody>
-        </table>
-      </>
-    );
-  };
-
   return (
     <>
       <Head>
@@ -195,7 +139,35 @@ const Draw: NextPage = () => {
           <Button onClick={resetDeck}>Reshuffle</Button>
         </div>
 
-        {drawnCards.length > 0 && <Results />}
+        {drawnCards.length > 0 && (
+          <div className={styles.results}>
+            <CardResults
+              triangle={getShapeResults("triangle")}
+              rectangle={getShapeResults("rectangle")}
+              hexagon={getShapeResults("hexagon")}
+              circle={getShapeResults("circle")}
+            />
+            <table className={styles.resultTable}>
+              <thead>
+                <tr>
+                  <th colSpan={1}>Results:</th>
+                  <th>
+                    {drawnCards.length > 0 &&
+                      `Drew ${drawnCards.length} card${
+                        drawnCards.length !== 1 ? "s" : ""
+                      }`}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Destiny:</td>
+                  <td>{getResult("destiny")}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        )}
       </main>
     </>
   );

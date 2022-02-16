@@ -30,6 +30,10 @@
   padding: 0.2rem 0.8rem;
 }
 
+.results {
+  margin-top: 2rem;
+}
+
 .resultIcon {
   display: inline-block;
 }
