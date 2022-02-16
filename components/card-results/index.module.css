@@ -14,4 +14,16 @@
   max-block-size: 50vh;
   padding: 3rem 1rem;
   transform: rotateX(3deg) rotateY(-1deg) rotateZ(2deg);
+  animation: c 0.3s;
+}
+
+@keyframes c {
+  0% {
+    transform: translateZ(3rem) translateX(-100%) rotateX(-5deg) rotateY(25deg)
+      rotateZ(60deg);
+  }
+  100% {
+    transform: translateZ(0) translateX(0) rotateX(3deg) rotateY(-1deg)
+      rotateZ(2deg);
+  }
 }
