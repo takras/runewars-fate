@@ -1,0 +1,9 @@
+.destinyStats {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.destinyStats div {
+  font-size: 1.3rem;
+}

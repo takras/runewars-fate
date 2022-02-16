@@ -1,12 +1,38 @@
-.numberInput {
-  font-size: 8rem;
-  width: 12rem;
-  display: block;
+.deck {
+  font-family: var(--font-family-headers);
+  font-size: 2rem;
+  text-align: center;
 }
 
-.numberIndicator {
-  font-size: 8rem;
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
 
+.stats {
+  background-color: hsla(12, 58%, 28%, 0.2);
+  border-radius: var(--border-radius-small);
+  margin-top: 1rem;
+}
+
+.stats[open] {
+  padding-bottom: 0.6rem;
+}
+
+.stats table {
+  margin: 0.5rem 0 1rem 0;
+}
+
+.stats summary {
+  cursor: pointer;
+  padding: 0.2rem 0.8rem;
+}
+
+.results {
+  margin-top: 1rem;
+  perspective: 10rem;
 }
 
 .resultIcon {
@@ -15,13 +41,10 @@
 
 .resultTable {
   border: 2px solid black;
+  margin-top: 1rem;
 }
 
 .resultTable td {
   padding: 5px;
   border-top: 1px solid grey;
-}
-
-.stepButton {
-  font-size: 3rem;
 }

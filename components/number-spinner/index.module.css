@@ -1,0 +1,42 @@
+.numberSpinner {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.numberSpinner label {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.numberSpinner input {
+  background: transparent;
+  border: 0;
+  border-radius: var(--border-radius-small);
+  font-size: 2rem;
+  appearance: textfield;
+  display: inline-block;
+  width: 7rem;
+  font-family: var(--font-family-headers);
+  line-height: 1;
+  text-align: center;
+  min-width: 7rem;
+}
+
+.numberSpinner input:focus-visible {
+  box-shadow: rgba(72, 35, 7, 0.46) 0 0 0 4px,
+    -6px 8px 10px rgba(81, 41, 10, 0.1), 0px 2px 2px rgba(81, 41, 10, 0.2);
+  outline: none;
+}
+
+.numberSpinner input::-webkit-outer-spin-button,
+.numberSpinner input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}

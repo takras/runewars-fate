@@ -1,13 +1,26 @@
-.shapes {
-  height: 25px;
+.icons {
+  height: 1.2rem;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.icons span {
+  max-height: 100%;
+}
+
+.icons img {
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  object-fit: contain;
 }
 
 .destiny {
-  max-width: 25px;
-  max-height: 25px;
+  height: 1.4rem;
 }
 
-.icons {
-  max-width: 25px;
-  max-height: 25px;
+.destiny img {
+  width: 1.4rem !important;
+  height: 1.4rem !important;
 }

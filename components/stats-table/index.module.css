@@ -1,0 +1,30 @@
+.statsTable {
+  border-collapse: collapse;
+  line-height: 1.66;
+  text-align: center;
+  width: 100%;
+}
+
+.statsTable thead th {
+  border-bottom: 4px solid hsla(26, 82%, 15%, 0.46);
+}
+
+.statsTable tbody tr:nth-child(2n) {
+  background-color: hsla(24, 26%, 93%, 0.2);
+}
+
+.statsTable td {
+  font-size: 1.3rem;
+}
+
+.colGroup {
+  background-color: hsla(26, 82%, 15%, 0.2);
+}
+
+.colGroup ~ :is(th, td):not(.colGroup) {
+  background-color: hsla(26, 82%, 15%, 0.2);
+}
+
+.colGroup ~ .colGroup {
+  background-color: inherit;
+}

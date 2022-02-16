@@ -1,9 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Rakkas&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -11,6 +11,61 @@ a {
   text-decoration: none;
 }
 
-* {
+*,
+::after,
+::before {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-family-headers);
+  font-size: inherit;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1;
+}
+
+html {
+  background-blend-mode: luminosity;
+  background-color: #86440a;
+  background-image: url(/background.jpg);
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1ch;
+  height: 100%;
+
+  font-size: clamp(14px, 2.4vmin, 32px);
+
+  --font-family-headers: "Rakkas";
+  --font-family-body: "Cormorant Garamond";
+
+  --border-radius-small: 0.25rem;
+  --spacing-5: clamp(1rem, 5vw, 3rem);
+
+  font-family: var(--font-family-body);
+}
+
+body,
+#__next {
+  display: contents;
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

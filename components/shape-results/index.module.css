@@ -1,0 +1,75 @@
+.shapeResult {
+  display: grid;
+  place-items: center normal;
+}
+
+.shapeResult dl {
+  block-size: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  inline-size: 100%;
+  margin: 0;
+}
+
+.shapeResult--triangle dl,
+.shapeResult--hexagon dl {
+  grid-template-areas:
+    "route   blank1"
+    "route   damage"
+    "special damage"
+    "special blank2";
+}
+
+.shapeResult--rectangle dl,
+.shapeResult--circle dl {
+  grid-template-areas:
+    "blank1 route"
+    "damage route"
+    "damage special"
+    "blank2 special";
+}
+
+.shapeResult dl > div {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: grid;
+  place-items: center;
+}
+
+.shapeResult dl > div:nth-child(1) {
+  grid-area: route;
+}
+
+.shapeResult dl > div:nth-child(1):not(:empty) {
+  background-image: url(/icons/route.png);
+}
+
+.shapeResult dl > div:nth-child(2) {
+  grid-area: damage;
+}
+
+.shapeResult dl > div:nth-child(2):not(:empty) {
+  background-image: url(/icons/damage.png);
+}
+
+.shapeResult dl > div:nth-child(3) {
+  grid-area: special;
+}
+
+.shapeResult dl > div:nth-child(3):not(:empty) {
+  background-image: url(/icons/special.png);
+}
+
+.shapeResult dd {
+  font-family: var(--font-family-headers);
+  font-size: 2rem;
+  margin: 0;
+  text-shadow: 2px 2px 2px hsl(0, 0%, 100%), 2px 2px 2px hsl(0, 0%, 100%),
+    2px 2px 2px hsl(0, 0%, 100%), -2px 2px 2px hsl(0, 0%, 100%),
+    -2px 2px 2px hsl(0, 0%, 100%), -2px 2px 2px hsl(0, 0%, 100%),
+    2px -2px 2px hsl(0, 0%, 100%), 2px -2px 2px hsl(0, 0%, 100%),
+    2px -2px 2px hsl(0, 0%, 100%), -2px -2px 2px hsl(0, 0%, 100%),
+    -2px -2px 2px hsl(0, 0%, 100%), -2px -2px 2px hsl(0, 0%, 100%);
+}
