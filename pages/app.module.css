@@ -9,6 +9,7 @@
 .appHeader {
   background-color: hsla(12, 58%, 28%, 0.8);
   color: hsla(28, 26%, 89%, 90%);
+  flex: 0 0 auto;
   margin-bottom: -0.5rem;
   padding: 1rem var(--spacing-5);
 }
@@ -17,5 +18,7 @@
   background-color: hsla(28, 26%, 89%, 90%);
   border-radius: var(--border-radius-small);
   box-shadow: 0 -0.5rem 1rem hsla(28, 26%, 10%, 50%);
+  flex: 1 1 auto;
+  overflow: auto;
   padding: 1rem var(--spacing-5);
 }

@@ -1,0 +1,13 @@
+.cardResults {
+  aspect-ratio: 484/744;
+  background-image: url(/card.jpg);
+  background-size: cover;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "triangle rectangle"
+    "hexagon  circle";
+  max-block-size: 66vh;
+  padding: 3rem 1rem;
+}

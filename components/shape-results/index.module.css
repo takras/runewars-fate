@@ -1,0 +1,74 @@
+.shapeResult {
+  display: grid;
+  place-items: center normal;
+}
+
+.shapeResult--triangle,
+.shapeResult--rectangle {
+  align-items: flex-start;
+}
+
+.shapeResult--hexagon,
+.shapeResult--circle {
+  align-items: flex-end;
+}
+
+.shapeResult--triangle dl > div:nth-child(1),
+.shapeResult--rectangle dl > div:nth-child(2),
+.shapeResult--triangle dl > div:nth-child(3),
+.shapeResult--hexagon dl > div:nth-child(1),
+.shapeResult--circle dl > div:nth-child(2),
+.shapeResult--hexagon dl > div:nth-child(3) {
+  align-self: flex-start;
+}
+
+.shapeResult--rectangle dl > div:nth-child(1),
+.shapeResult--triangle dl > div:nth-child(2),
+.shapeResult--rectangle dl > div:nth-child(3),
+.shapeResult--circle dl > div:nth-child(1),
+.shapeResult--hexagon dl > div:nth-child(2),
+.shapeResult--circle dl > div:nth-child(3) {
+  align-self: flex-end;
+}
+
+.shapeResult dl {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.shapeResult dl > div {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  block-size: 30%;
+  inline-size: 30%;
+  display: grid;
+  place-items: center;
+}
+
+.shapeResult dl > div:nth-child(1):not(:empty) {
+  background-image: url(/icons/route.png);
+}
+
+.shapeResult dl > div:nth-child(2):not(:empty) {
+  background-image: url(/icons/damage.png);
+}
+
+.shapeResult dl > div:nth-child(3):not(:empty) {
+  background-image: url(/icons/special.png);
+}
+
+.shapeResult dd {
+  font-family: var(--font-family-headers);
+  font-size: 2rem;
+  margin: 0;
+  text-shadow: 2px 2px 2px hsl(0, 0%, 100%), 2px 2px 2px hsl(0, 0%, 100%),
+    2px 2px 2px hsl(0, 0%, 100%), -2px 2px 2px hsl(0, 0%, 100%),
+    -2px 2px 2px hsl(0, 0%, 100%), -2px 2px 2px hsl(0, 0%, 100%),
+    2px -2px 2px hsl(0, 0%, 100%), 2px -2px 2px hsl(0, 0%, 100%),
+    2px -2px 2px hsl(0, 0%, 100%), -2px -2px 2px hsl(0, 0%, 100%),
+    -2px -2px 2px hsl(0, 0%, 100%), -2px -2px 2px hsl(0, 0%, 100%);
+}

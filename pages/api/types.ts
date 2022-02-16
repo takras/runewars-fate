@@ -6,25 +6,22 @@ export type Shapes =
   | "destiny";
 export type Symbols =
   | "damage"
-  | "damage1"
-  | "damage2"
-  | "damage3"
   | "route"
-  | "route1"
-  | "route2"
   | "special"
   | "red"
   | "gold"
   | "blank"
   | Shapes;
 
+export type CardType = "damage" | "route" | "special";
+
 export interface Card {
   id: number;
-  triangle: string | null;
-  rectangle: string | null;
-  hexagon: string | null;
-  circle: string | null;
-  destiny: string | null;
+  triangle: { type: CardType; count: number } | null;
+  rectangle: { type: CardType; count: number } | null;
+  hexagon: { type: CardType; count: number } | null;
+  circle: { type: CardType; count: number } | null;
+  destiny: { type: CardType; count: number } | null;
 }
 
 export interface Stats {

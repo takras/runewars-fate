@@ -65,12 +65,12 @@ const StatsTable = ({
         <tr>
           <th></th>
           <th>
-            <Icon symbol="damage1" />
+            <Icon symbol="damage" />
           </th>
           <th>Avg</th>
           <th>Rng</th>
           <th className={styles.colGroup}>
-            <Icon symbol="route1" />
+            <Icon symbol="route" />
           </th>
           <th>Avg</th>
           <th>Rng</th>

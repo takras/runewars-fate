@@ -5,10 +5,10 @@ import Image from "next/image";
 interface Props {
   symbol: Symbols;
   className?: string;
+  times?: number;
 }
 
-export const Icon = ({ symbol, className }: Props) => {
-  let times = 1;
+export const Icon = ({ symbol, className, times = 1 }: Props) => {
   let width = 0;
   let height = 0;
   let folder = "";
@@ -45,16 +45,13 @@ export const Icon = ({ symbol, className }: Props) => {
       width = 38;
       height = 27;
       break;
-    case "damage1":
-    case "damage2":
-    case "damage3":
+    case "damage":
       fileName = "damage";
       folder = "icons";
       width = 18;
       height = 25;
       break;
-    case "route1":
-    case "route2":
+    case "route":
       fileName = "route";
       folder = "icons";
       width = 120;
@@ -69,15 +66,6 @@ export const Icon = ({ symbol, className }: Props) => {
       folder = "icons";
       width = 50;
       height = 50;
-      break;
-  }
-  switch (symbol) {
-    case "route2":
-    case "damage2":
-      times = 2;
-      break;
-    case "damage3":
-      times = 3;
       break;
   }
 

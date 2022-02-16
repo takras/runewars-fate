@@ -11,33 +11,27 @@ export const getShapeStats = (shape: Shapes, deck: Card[]) => {
     gold: 0,
   };
   deck.forEach((card) => {
-    switch (card[shape] as Symbols) {
-      case "damage1":
-        stats.damage.push(1);
-        break;
-      case "damage2":
-        stats.damage.push(2);
-        break;
-      case "damage3":
-        stats.damage.push(3);
-        break;
-      case "route1":
-        stats.route.push(1);
-        break;
-      case "route2":
-        stats.route.push(2);
-        break;
-      case "special":
-        stats.special++;
-        break;
-      case "red":
-        stats.red++;
-        break;
-      case "gold":
-        stats.gold++;
-        break;
-      default:
-        stats.blank++;
+    const cardShape = card[shape];
+    if (cardShape) {
+      switch (cardShape.type as Symbols) {
+        case "damage":
+          stats.damage.push(cardShape.count);
+          break;
+        case "route":
+          stats.route.push(cardShape.count);
+          break;
+        case "special":
+          stats.special++;
+          break;
+        case "red":
+          stats.red++;
+          break;
+        case "gold":
+          stats.gold++;
+          break;
+        default:
+          stats.blank++;
+      }
     }
   });
   return stats;

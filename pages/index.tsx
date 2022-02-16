@@ -2,7 +2,7 @@ import { useState } from "react";
 import Cards from "./api/cards.json";
 import { NextPage } from "next";
 import { Icon } from "./api/image";
-import { Card, Shapes, Stats, Symbols } from "./api/types";
+import { Card, CardType, Shapes, Stats, Symbols } from "./api/types";
 import Head from "next/head";
 import { cumulativeHypergeometric } from "./api/hypergeometric";
 
@@ -11,6 +11,8 @@ import NumberSpinner from "../components/number-spinner";
 import Button from "../components/button";
 import DestinyStats from "../components/destiny-stats";
 import StatsTable from "../components/stats-table";
+import ShapeResults from "../components/shape-results";
+import CardResults from "../components/card-results";
 
 const Draw: NextPage = () => {
   const [initialCards] = useState(Cards.cards as Card[]);
@@ -48,8 +50,8 @@ const Draw: NextPage = () => {
     return drawnCards
       .filter((card) => card[shape])
       .sort((card1, card2) => {
-        const a = card1[shape] || "";
-        const b = card2[shape] || "";
+        const a = card1[shape]?.type || "";
+        const b = card2[shape]?.type || "";
         if (a < b) {
           return -1;
         }
@@ -63,57 +65,98 @@ const Draw: NextPage = () => {
           <Icon
             key={idx}
             className={styles.resultIcon}
-            symbol={result[shape] as Symbols}
+            symbol={result[shape]?.type as Symbols}
+            times={result[shape]?.count}
           />
         ) : null;
       });
   };
 
+  const getShapeResult = (shape: Shapes) => {
+    const shapeCards = drawnCards.filter((card) => card[shape]);
+    const counts = new Map<CardType, number>();
+
+    shapeCards.forEach((card) => {
+      // guaranteed not undefined by filter above
+      const cardType = card[shape]!.type;
+      const shapeCount = card[shape]!.count;
+      counts.set(cardType, shapeCount + (counts.get(cardType) || 0));
+    });
+
+    return counts;
+  };
+
+  const getShapeResults = (shape: Shapes) => {
+    const shapeCards = drawnCards.filter((card) => card[shape]);
+    const counts: Record<CardType, number> = {
+      route: 0,
+      damage: 0,
+      special: 0,
+    };
+
+    shapeCards.forEach((card) => {
+      // guaranteed not undefined by filter above
+      const cardType = card[shape]!.type;
+      const shapeCount = card[shape]!.count;
+      counts[cardType] += shapeCount;
+    });
+
+    return counts;
+  };
+
   const Results = () => {
     return (
-      <table className={styles.resultTable}>
-        <thead>
-          <tr>
-            <th colSpan={1}>Results:</th>
-            <th>
-              {drawnCards.length > 0 &&
-                `Drew ${drawnCards.length} card${
-                  drawnCards.length !== 1 ? "s" : ""
-                }`}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <Icon symbol="triangle" />
-            </td>
-            <td>{getResult("triangle")}</td>
-          </tr>
-          <tr>
-            <td>
-              <Icon symbol="circle" />
-            </td>
-            <td>{getResult("circle")}</td>
-          </tr>
-          <tr>
-            <td>
-              <Icon symbol="rectangle" />
-            </td>
-            <td>{getResult("rectangle")}</td>
-          </tr>
-          <tr>
-            <td>
-              <Icon symbol="hexagon" />
-            </td>
-            <td>{getResult("hexagon")}</td>
-          </tr>
-          <tr>
-            <td>Destiny:</td>
-            <td>{getResult("destiny")}</td>
-          </tr>
-        </tbody>
-      </table>
+      <>
+        <CardResults
+          triangle={getShapeResults("triangle")}
+          rectangle={getShapeResults("rectangle")}
+          hexagon={getShapeResults("hexagon")}
+          circle={getShapeResults("circle")}
+        />
+        <table className={styles.resultTable}>
+          <thead>
+            <tr>
+              <th colSpan={1}>Results:</th>
+              <th>
+                {drawnCards.length > 0 &&
+                  `Drew ${drawnCards.length} card${
+                    drawnCards.length !== 1 ? "s" : ""
+                  }`}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <Icon symbol="triangle" />
+              </td>
+              <td>{getResult("triangle")}</td>
+            </tr>
+            <tr>
+              <td>
+                <Icon symbol="circle" />
+              </td>
+              <td>{getResult("circle")}</td>
+            </tr>
+            <tr>
+              <td>
+                <Icon symbol="rectangle" />
+              </td>
+              <td>{getResult("rectangle")}</td>
+            </tr>
+            <tr>
+              <td>
+                <Icon symbol="hexagon" />
+              </td>
+              <td>{getResult("hexagon")}</td>
+            </tr>
+            <tr>
+              <td>Destiny:</td>
+              <td>{getResult("destiny")}</td>
+            </tr>
+          </tbody>
+        </table>
+      </>
     );
   };
 
