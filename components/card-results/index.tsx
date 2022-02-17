@@ -27,11 +27,11 @@ const getDestinyResult: (cardsDrawn: Card[]) => DestinyType = (cardsDrawn) => {
     return "gold";
   }
 
-  if (cardsDrawn.some((card) => card.destiny === "red")) {
-    return "red";
+  if (cardsDrawn.some((card) => card.destiny === "grey")) {
+    return "grey";
   }
 
-  return "grey";
+  return "red";
 };
 
 const CardResults = ({ cardsDrawn }: { cardsDrawn: Card[] }) => {
