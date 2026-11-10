@@ -1,4 +1,21 @@
-.header h1 {
-  font-size: clamp(1rem, 3vmax, 2.5rem);
+.header {
+  align-items: baseline;
+  color: hsla(36, 60%, 92%, 0.95);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
   text-shadow: 0 0 0.25em hsl(9, 90%, 4%);
+}
+
+.header h1 {
+  font-size: 1.75rem;
+}
+
+.header a {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.header a:hover {
+  text-decoration: underline;
 }

@@ -1,7 +1,7 @@
-import { cumulativeHypergeometric } from "../../pages/api/hypergeometric";
-import { Icon } from "../../pages/api/image";
-import { avg, getShapeStats, range } from "../../pages/api/stats";
-import { Card, Shapes, Stats } from "../../pages/api/types";
+import { cumulativeHypergeometric } from "../../lib/hypergeometric";
+import { Icon } from "../../lib/image";
+import { avg, getShapeStats, range } from "../../lib/stats";
+import { Card, Shapes, Stats } from "../../lib/types";
 
 import styles from "./index.module.css";
 

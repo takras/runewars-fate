@@ -1,9 +1,17 @@
 .destinyStats {
-  align-items: baseline;
+  align-items: center;
   display: flex;
-  justify-content: space-evenly;
+  font-variant-numeric: lining-nums tabular-nums;
+  gap: 0.35rem;
+  justify-content: space-between;
+}
+
+.destinyStats h3 {
+  font-size: 1.1rem;
+  margin-right: 0.35rem;
 }
 
 .destinyStats div {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
 }

@@ -1,0 +1,28 @@
+.stage {
+  block-size: 100%;
+  container-type: size;
+  display: grid;
+  inline-size: 100%;
+  perspective: 70rem;
+  place-items: center;
+}
+
+.tilt {
+  --tilt-x: 0;
+  --tilt-y: 0;
+  /* Largest 484:744 card that fits, leaving 6% spare for its rotated corners. */
+  --card-width: min(94cqw, 61cqh);
+
+  aspect-ratio: 484/744;
+  /* Everything on the card is sized in em, so it scales with the card. */
+  font-size: calc(var(--card-width) * 0.03074);
+  inline-size: var(--card-width);
+  transform: translate3d(
+      calc(var(--tilt-x) * 0.6em),
+      calc(var(--tilt-y) * 0.6em),
+      0
+    )
+    rotateX(calc(var(--tilt-y) * -11deg)) rotateY(calc(var(--tilt-x) * 11deg));
+  transform-style: preserve-3d;
+  will-change: transform;
+}

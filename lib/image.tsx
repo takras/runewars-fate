@@ -1,6 +1,6 @@
 import styles from "./image.module.css";
+import { assetPath } from "./asset-path";
 import { Symbols } from "./types";
-import Image from "next/image";
 
 interface Props {
   symbol: Symbols;
@@ -81,11 +81,13 @@ export const Icon = ({ symbol, className, times = 1 }: Props) => {
         `}
         key={i}
       >
-        <Image
+        {/* A plain img: next/image needs a server to optimise images. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           alt={fileName}
           width={width}
           height={height}
-          src={`/${folder}/${fileName}.png`}
+          src={assetPath(`/${folder}/${fileName}.png`)}
         />
       </div>
     );

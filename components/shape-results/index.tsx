@@ -1,4 +1,4 @@
-import { CardType, Shapes } from "../../pages/api/types";
+import { CardType, Shapes } from "../../lib/types";
 import styles from "./index.module.css";
 
 const ShapeResults = ({

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Cards from "./api/cards.json";
+import Cards from "../lib/cards.json";
 import { NextPage } from "next";
-import { Card } from "./api/types";
+import { Card } from "../lib/types";
+import { assetPath } from "../lib/asset-path";
 import Head from "next/head";
 
 import styles from "./index.module.css";
@@ -10,6 +11,8 @@ import Button from "../components/button";
 import DestinyStats from "../components/destiny-stats";
 import StatsTable from "../components/stats-table";
 import CardResults from "../components/card-results";
+import AppHeader from "../components/app-header";
+import TiltCard from "../components/tilt-card";
 
 const Draw: NextPage = () => {
   const [initialCards] = useState(Cards.cards as Card[]);
@@ -17,20 +20,24 @@ const Draw: NextPage = () => {
   const [cardsDrawn, setCardsDrawn] = useState<Card[]>([]);
   const [, setCurrentCard] = useState<Card>();
   const [cardsToDraw, setCardsToDraw] = useState(1);
+  const [gameName, setGameName] = useState("ABCDE");
 
   const drawCard = () => {
     setCardsDrawn([]);
     const cardList = [];
     let deckClone = [...deck];
+    let cardsDrawn = [];
     for (let i = 0; i < cardsToDraw; i++) {
       const random = Math.floor(Math.random() * deckClone.length);
       const drawnCard = deckClone[random];
+      cardsDrawn.push(drawnCard);
       deckClone.splice(random, 1);
       if (deckClone.length === 0) {
         deckClone = [...initialCards];
       }
       cardList.push(drawnCard);
     }
+    console.log(deckClone, cardsDrawn);
     setDeck(deckClone);
     setCardsDrawn(cardList);
     setCurrentCard(cardList[cardList.length - 1]);
@@ -51,38 +58,58 @@ const Draw: NextPage = () => {
           name="description"
           content="Simulate drawing cards from RuneWars"
         />
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href={assetPath("/favicon.png")} />
       </Head>
 
       <main className={styles.indexPage}>
-        <div className={styles.deck}>
-          {deck.length} card{deck.length > 1 ? "s" : ""} in deck
+        <div className={styles.header}>
+          <AppHeader />
         </div>
 
-        <NumberSpinner
-          label="Cards to draw"
-          initialValue={cardsToDraw}
-          min={1}
-          max={deck.length}
-          onChange={(newValue) => setCardsToDraw(newValue)}
-        />
-
-        <details className={styles.stats}>
-          <summary>Stats</summary>
-          <StatsTable cardsToDraw={cardsToDraw} deck={deck} />
-          <DestinyStats deck={deck} cardsToDraw={cardsToDraw} />
-        </details>
-
-        <div className={styles.actions}>
-          <Button onClick={drawCard}>Draw</Button>
-          <Button onClick={resetDeck}>Reshuffle</Button>
+        <div className={styles.stage}>
+          <TiltCard>
+            {cardsDrawn.length > 0 ? (
+              <CardResults cardsDrawn={cardsDrawn} />
+            ) : (
+              <div className={styles.empty}>
+                <span className={styles.emptyLabel}>
+                  Draw to reveal your fate
+                </span>
+              </div>
+            )}
+          </TiltCard>
         </div>
 
-        {cardsDrawn.length > 0 && (
-          <div className={styles.results}>
-            <CardResults cardsDrawn={cardsDrawn} />
+        <section className={styles.panel}>
+          <div className={styles.controls}>
+            <div className={styles.deck}>
+              <span className={styles.label}>In deck</span>
+              <span className={styles.deckCount}>{deck.length}</span>
+            </div>
+
+            <NumberSpinner
+              label="Cards to draw"
+              initialValue={cardsToDraw}
+              min={1}
+              max={deck.length}
+              onChange={(newValue) => setCardsToDraw(newValue)}
+            />
           </div>
-        )}
+
+          <div className={styles.stats}>
+            <StatsTable cardsToDraw={cardsToDraw} deck={deck} />
+            <DestinyStats deck={deck} cardsToDraw={cardsToDraw} />
+          </div>
+
+          <div className={styles.actions}>
+            <Button variant="primary" onClick={drawCard}>
+              Draw
+            </Button>
+            <Button variant="secondary" onClick={resetDeck}>
+              Reshuffle
+            </Button>
+          </div>
+        </section>
       </main>
     </>
   );

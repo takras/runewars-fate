@@ -1,50 +1,187 @@
-.deck {
-  font-family: var(--font-family-headers);
-  font-size: 2rem;
-  text-align: center;
+/* Portrait: header, card filling whatever is left, then a sheet of controls. */
+.indexPage {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "stage"
+    "panel";
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 34rem;
 }
 
-.actions {
+/*
+ * The full-screen background. It is here rather than in globals.css because
+ * Next 12 breaks url() in global CSS when the site has a basePath (GitHub Pages).
+ */
+.indexPage::before {
+  background-blend-mode: normal, luminosity;
+  background-color: #86440a;
+  background-image: radial-gradient(
+      ellipse at 50% 40%,
+      hsla(24, 40%, 12%, 0.15),
+      hsla(20, 45%, 6%, 0.7)
+    ),
+    url(../public/background.jpg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  inset: 0;
+  position: fixed;
+  z-index: -1;
+}
+
+.header {
+  grid-area: header;
+  padding: calc(0.6rem + var(--safe-top)) calc(1rem + var(--safe-right)) 0
+    calc(1rem + var(--safe-left));
+}
+
+.stage {
+  grid-area: stage;
+  min-height: 0;
+  min-width: 0;
+  padding: 0.5rem 1rem;
+  position: relative;
+  /* Keeps the card above the panel while it is being dealt. */
+  z-index: 1;
+}
+
+.empty {
+  align-items: center;
+  background-color: hsla(20, 45%, 8%, 0.35);
+  block-size: 100%;
+  border: 0.25em solid hsla(42, 62%, 58%, 0.55);
+  border-radius: 3.5% / 2.3%;
+  color: hsla(36, 60%, 88%, 0.9);
+  display: flex;
+  font-family: var(--font-family-headers);
+  font-size: 4em;
+  justify-content: center;
+  line-height: 1.2;
+  padding: 1em;
+  text-align: center;
+  text-shadow: 0 0 0.25em hsl(9, 90%, 4%);
+  transform: rotateX(3deg) rotateY(-1deg) rotateZ(2deg);
+}
+
+.emptyLabel {
+  font-size: 0.7em;
+}
+
+.panel {
+  background-color: var(--color-parchment);
+  border-top: 2px solid var(--color-gold);
+  border-radius: var(--border-radius-large) var(--border-radius-large) 0 0;
+  box-shadow: 0 -0.5rem 1.5rem hsla(20, 45%, 6%, 0.5);
+  display: grid;
+  gap: 0.6rem;
+  grid-area: panel;
+  padding: 0.7rem calc(1rem + var(--safe-right))
+    calc(0.8rem + var(--safe-bottom)) calc(1rem + var(--safe-left));
+}
+
+.controls {
+  align-items: center;
   display: flex;
   gap: 1rem;
   justify-content: space-between;
-  margin-top: 1rem;
+}
+
+.deck {
+  display: grid;
+  justify-items: start;
+  line-height: 1;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.deckCount {
+  font-family: var(--font-family-headers);
+  font-size: 2rem;
+  line-height: 1.2;
 }
 
 .stats {
-  background-color: hsla(12, 58%, 28%, 0.2);
-  border-radius: var(--border-radius-small);
-  margin-top: 1rem;
+  display: grid;
+  gap: 0.3rem;
 }
 
-.stats[open] {
-  padding-bottom: 0.6rem;
+.actions {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 3fr 2fr;
 }
 
-.stats table {
-  margin: 0.5rem 0 1rem 0;
+/* Landscape: the card takes the left, header and panel centred on the right. */
+@media (min-aspect-ratio: 1/1) {
+  .indexPage {
+    column-gap: 2rem;
+    grid-template-areas:
+      "stage ."
+      "stage header"
+      "stage panel"
+      "stage .";
+    grid-template-columns: minmax(0, 1fr) minmax(24rem, 30rem);
+    grid-template-rows: 1fr auto auto 1fr;
+    margin-inline: auto;
+    max-width: 90rem;
+    min-height: 26rem;
+    padding: calc(0.75rem + var(--safe-top)) calc(1.5rem + var(--safe-right))
+      calc(0.75rem + var(--safe-bottom)) calc(1.5rem + var(--safe-left));
+    row-gap: 0.75rem;
+  }
+
+  .header {
+    padding: 0;
+  }
+
+  .stage {
+    padding: 0;
+  }
+
+  .panel {
+    border: 2px solid var(--color-gold);
+    border-radius: var(--border-radius-large);
+    box-shadow: 0 1rem 2rem hsla(20, 45%, 6%, 0.55);
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+  }
 }
 
-.stats summary {
-  cursor: pointer;
-  padding: 0.2rem 0.8rem;
+/* Touch screens must fit no matter how small, so nothing gets a minimum. */
+@media (pointer: coarse), (max-width: 640px) {
+  .indexPage {
+    height: 100%;
+    min-height: 0;
+  }
 }
 
-.results {
-  margin: 1rem auto 2rem auto;
-  perspective: 10rem;
-}
+/* Phones held sideways have very little height to share. */
+@media (min-aspect-ratio: 1/1) and (max-height: 480px) {
+  .indexPage {
+    padding-block: calc(0.4rem + var(--safe-top))
+      calc(0.4rem + var(--safe-bottom));
+    row-gap: 0.4rem;
+  }
 
-.resultIcon {
-  display: inline-block;
-}
+  .panel {
+    gap: 0.25rem;
+    padding: 0.4rem 0.9rem;
+  }
 
-.resultTable {
-  border: 2px solid black;
-  margin-top: 1rem;
-}
+  .stats {
+    gap: 0.1rem;
+  }
 
-.resultTable td {
-  padding: 5px;
-  border-top: 1px solid grey;
+  .stats table {
+    line-height: 1.1;
+  }
 }

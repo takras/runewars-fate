@@ -1,6 +1,6 @@
 import hash from "hash-sum";
 
-import { Card, CardType, DestinyType, Shapes } from "../../pages/api/types";
+import { Card, CardType, DestinyType, Shapes } from "../../lib/types";
 import ShapeResults from "../shape-results";
 import styles from "./index.module.css";
 

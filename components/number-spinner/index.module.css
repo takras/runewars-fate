@@ -1,28 +1,40 @@
 .numberSpinner {
   align-items: center;
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
+  column-gap: 0.25rem;
+  display: grid;
+  grid-template-areas:
+    "label label label"
+    "minus input plus";
+  grid-template-columns: auto 3.25rem auto;
+  justify-items: center;
 }
 
-.numberSpinner label {
-  align-items: center;
-  display: flex;
-  gap: 1rem;
+.numberSpinner label,
+.buttons {
+  display: contents;
+}
+
+.numberSpinner label span {
+  font-size: 1rem;
+  font-weight: 700;
+  grid-area: label;
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
 }
 
 .numberSpinner input {
+  appearance: textfield;
   background: transparent;
   border: 0;
   border-radius: var(--border-radius-small);
-  font-size: 2rem;
-  appearance: textfield;
-  display: inline-block;
-  width: 7rem;
+  color: inherit;
   font-family: var(--font-family-headers);
+  font-size: 2rem;
+  grid-area: input;
   line-height: 1;
+  padding: 0;
   text-align: center;
-  min-width: 7rem;
+  width: 100%;
 }
 
 .numberSpinner input:focus-visible {
@@ -36,7 +48,18 @@
   display: none;
 }
 
-.buttons {
-  display: flex;
-  gap: 1rem;
+.buttons button:first-child {
+  grid-area: minus;
+}
+
+.buttons button:last-child {
+  grid-area: plus;
+}
+
+/* An on-screen keyboard would cover the one screen; the buttons are enough. */
+@media (pointer: coarse) {
+  .numberSpinner input,
+  .numberSpinner label span {
+    pointer-events: none;
+  }
 }

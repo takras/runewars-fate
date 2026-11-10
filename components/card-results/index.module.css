@@ -1,60 +1,74 @@
 .cardResults {
-  animation: cardFlip 0.3s;
-  aspect-ratio: 484/744;
-  background-image: url(/card.jpg);
+  --deal-from: translate3d(0, 75%, 14em);
+
+  animation: cardFlip 0.45s cubic-bezier(0.2, 0.8, 0.25, 1);
+  background-image: url(../../public/card.jpg);
   background-size: cover;
-  border-radius: 1rem;
-  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 40%);
+  block-size: 100%;
+  border-radius: 3.5% / 2.3%;
+  box-shadow: calc(var(--tilt-x) * -2em) calc(1.5em + var(--tilt-y) * -2em) 3em
+    rgb(0 0 0 / 55%);
   display: grid;
-  font-size: clamp(0rem, 1rem, 1vh);
-  gap: 1rem;
+  gap: 2.4em;
   grid-template-areas:
     "triangle rectangle"
     "hexagon  circle";
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  margin: 0 auto;
-  max-block-size: 50vh;
-  padding: clamp(0rem, 4rem, 6vh) 1rem;
+  padding: 6em 2.4em;
   position: relative;
   transform: rotateX(3deg) rotateY(-1deg) rotateZ(2deg);
+}
+
+/* Light catching the card, sliding across it as it tilts. */
+.cardResults::after {
+  background-image: radial-gradient(
+    circle at calc(50% + var(--tilt-x) * 60%) calc(45% + var(--tilt-y) * 60%),
+    rgb(255 240 205 / 55%),
+    transparent 62%
+  );
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  position: absolute;
 }
 
 .destiny {
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: contain;
+  height: 6em;
   left: 50%;
-  top: 0.3em;
-  height: clamp(0rem, 4rem, 6vh);
   position: absolute;
+  top: 0.3em;
   transform: translateX(-48%);
-  width: clamp(0rem, 4rem, 6vh);
+  width: 6em;
 }
 
 .destiny--gold {
-  background-image: url(/destiny/gold.png);
+  background-image: url(../../public/destiny/gold.png);
 }
 
 .destiny--red {
-  background-image: url(/destiny/red.png);
+  background-image: url(../../public/destiny/red.png);
 }
 
 .destiny--grey {
-  background-image: url(/destiny/blank.png);
+  background-image: url(../../public/destiny/blank.png);
 }
 
 .summary {
-  left: 50%;
   bottom: 1.2em;
   color: white;
+  left: 50%;
+  line-height: 1;
   position: absolute;
   text-align: center;
-  line-height: 1;
-  transform: translateX(-40%);
-
   text-shadow: 1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000,
     -1px -1px 1px #000;
+  transform: translateX(-40%);
 }
 
 .summary output {
@@ -68,13 +82,28 @@
   line-height: 0.5;
 }
 
+/* The card is dealt from the side the Draw button is on. */
+@media (min-aspect-ratio: 1/1) {
+  .cardResults {
+    --deal-from: translate3d(75%, 10%, 14em);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardResults {
+    animation: none;
+  }
+}
+
 @keyframes cardFlip {
   0% {
-    transform: translateZ(3rem) translateX(-100%) rotateX(-5deg) rotateY(25deg)
-      rotateZ(60deg);
+    opacity: 0;
+    transform: var(--deal-from) rotateX(-5deg) rotateY(25deg) rotateZ(40deg);
+  }
+  35% {
+    opacity: 1;
   }
   100% {
-    transform: translateZ(0) translateX(0) rotateX(3deg) rotateY(-1deg)
-      rotateZ(2deg);
+    transform: translate3d(0, 0, 0) rotateX(3deg) rotateY(-1deg) rotateZ(2deg);
   }
 }

@@ -1,7 +1,7 @@
-import { cumulativeHypergeometric } from "../../pages/api/hypergeometric";
-import { Icon } from "../../pages/api/image";
-import { getDestinyStats } from "../../pages/api/stats";
-import { Card } from "../../pages/api/types";
+import { cumulativeHypergeometric } from "../../lib/hypergeometric";
+import { Icon } from "../../lib/image";
+import { getDestinyStats } from "../../lib/stats";
+import { Card } from "../../lib/types";
 import styles from "./index.module.css";
 
 const DestinyStats = ({

@@ -80,8 +80,20 @@ const NumberSpinner = ({ label, initialValue, min, max, onChange }: Props) => {
       </label>
 
       <div className={styles.buttons}>
-        <Button onClick={() => updateCurrentValue(current - 1)}>-</Button>
-        <Button onClick={() => updateCurrentValue(current + 1)}>+</Button>
+        <Button
+          aria-label="One fewer"
+          disabled={current <= min}
+          onClick={() => updateCurrentValue(current - 1)}
+        >
+          -
+        </Button>
+        <Button
+          aria-label="One more"
+          disabled={current >= max}
+          onClick={() => updateCurrentValue(current + 1)}
+        >
+          +
+        </Button>
       </div>
     </div>
   );

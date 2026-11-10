@@ -30,34 +30,55 @@ h5 {
 }
 
 html {
-  background-blend-mode: luminosity;
-  background-color: #86440a;
-  background-image: url(/background.jpg);
-  background-position: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* The background photo lives in pages/index.module.css (see the note there). */
+  background-color: #2a1a10;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1ch;
-  height: 100%;
+  min-height: 100%;
 
-  font-size: clamp(14px, 2.4vmin, 32px);
+  font-size: clamp(14px, 2.4vmin, 28px);
 
-  --font-family-headers: "Rakkas";
-  --font-family-body: "Cormorant Garamond";
+  --font-family-headers: "Rakkas", serif;
+  --font-family-body: "Cormorant Garamond", serif;
 
   --border-radius-small: 0.25rem;
-  --spacing-5: clamp(1rem, 5vw, 3rem);
+  --border-radius-large: 0.75rem;
 
+  --color-ink: #2e1a0c;
+  --color-parchment: hsla(32, 38%, 90%, 0.96);
+  --color-rule: hsla(26, 82%, 15%, 0.28);
+  --color-gold: hsl(42, 62%, 58%);
+  --color-ember: #7c2f14;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+
+  color: var(--color-ink);
   font-family: var(--font-family-body);
+  font-variant-numeric: lining-nums;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
-body,
-#__next {
-  display: contents;
+/* Phones and tablets get a fixed, single screen: no scrolling, no zooming. */
+@media (pointer: coarse), (max-width: 640px) {
+  html,
+  body {
+    inset: 0;
+    overflow: hidden;
+    overscroll-behavior: none;
+    position: fixed;
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  #__next {
+    height: 100%;
+  }
 }
 
 .sr-only:not(:focus):not(:active) {
